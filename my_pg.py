@@ -1,23 +1,24 @@
 import string
 import random
 
-c = string.ascii_uppercase
-b = string.digits
-a = string.ascii_lowercase
-d = string.punctuation
+# Define the character sets to use for password generation
+upper_letters = string.ascii_uppercase
+lower_letters = string.ascii_lowercase
+digits = string.digits
+symbols = string.punctuation
 
+# Combine the character sets into a single string for easy use in password generation
+all_chars = upper_letters + lower_letters + digits + symbols
 
-def genpass(limit):
-    x = []
-    for i in range(limit):
-        data = "".join(random.choices(c + b + a + d))
-        x.append(data)
+def generate_password(length):
+    """Generates a random password of the specified length."""
+    password_chars = random.choices(all_chars, k=length)
+    password = "".join(password_chars)
+    return password
 
-    finalpass = "".join(x)
-    return finalpass
+# Generate an example password and print it to the console
+password = generate_password(8)
+print(f"Generated password: {password}")
 
-
-print(genpass(8))
-
-
-input()
+# Pause the script to prevent it from exiting immediately
+input("Press Enter to exit...")
